@@ -18,7 +18,8 @@ export class AlbumsListComponent implements OnInit{
     private _route: ActivatedRoute;
     private _router: Router;
     private _albumService: AlbumService;
-    
+    private loading: boolean;
+
     public titulo: string;
     public albums: Album[];
     public errorMessage: any;
@@ -38,6 +39,8 @@ export class AlbumsListComponent implements OnInit{
     }
 
     getAlbums(){
+        this.loading = true;
+
         this._albumService.getAlbums().subscribe(
             result => {
                 // Resultado de la API (nos devuelve JSON)
@@ -45,7 +48,9 @@ export class AlbumsListComponent implements OnInit{
 
                 if (!this.albums){
                     alert('Error en el servidor');
-                }                
+                } 
+                
+                this.loading = false;
             },
             error => {
                 this.errorMessage = <any>error;
@@ -53,6 +58,8 @@ export class AlbumsListComponent implements OnInit{
                 if (this.errorMessage != null){
                     console.log(this.errorMessage);
                 }
+
+                this.loading = false;
             }
         );
     }
