@@ -1,3 +1,25 @@
-<h1>
-  {{title}}
-</h1>
+<header id="header">
+   
+    
+    <img src="../assets/images/pictures.png" id="logo"/>
+    
+
+    <div class="title-subtitle">
+        <h1 [routerLink]="['/']">{{title}}</h1>
+        <p>{{description}}</p>
+    </div>
+
+    <a class="btn-add-album" href="#">
+        Crear Album
+    </a>
+
+    <div class="clearfix"></div>
+</header>
+
+<section class="main">
+
+    <!-- MOSTRAMOS OTRO COMPONENTE-->    
+    <router-outlet></router-outlet>
+    
+    <div class="clearfix"></div>
+</section>
