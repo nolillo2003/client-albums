@@ -1,0 +1,11 @@
+<h1>{{titulo}}</h1>
+
+<form #formImage="ngForm" (ngSubmit)="onSubmit()">
+    <label>Título</label>
+    <p>
+        <input type="text" #title="ngModel" name="title" [(ngModel)]="image.title" required/>
+        <span *ngIf="!title.valid && title.touched">
+            El título no es válido
+        </span>
+    </p>
+</form>

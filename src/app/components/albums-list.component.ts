@@ -23,6 +23,7 @@ export class AlbumsListComponent implements OnInit{
     public titulo: string;
     public albums: Album[];
     public errorMessage: any;
+    public confirmado: string;
 
     constructor(_route: ActivatedRoute, _router: Router, _albumService: AlbumService){
         this._route = _route;
@@ -60,6 +61,35 @@ export class AlbumsListComponent implements OnInit{
                 }
 
                 this.loading = false;
+            }
+        );
+    }
+
+    onDeleteConfirm(id: string){
+        this.confirmado = id;
+    }
+
+    onCancelDeleteConfirm(){
+        this.confirmado = null;
+    }
+
+    onDeleteAlbum(id: string){
+        this._albumService.deleteAlbum(id).subscribe(
+            result => {
+                if (!result.album){
+                    alert('Error en el servidor');
+                } 
+
+                this.getAlbums();
+            },
+            error => {
+                this.errorMessage = <any>error;
+
+                if (this.errorMessage != null){
+                    console.log(this.errorMessage);
+                }
+
+                this.getAlbums();
             }
         );
     }

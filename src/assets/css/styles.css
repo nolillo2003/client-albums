@@ -62,6 +62,10 @@ header #logo{
     margin-top: 10px;
 }
 
+.main{
+    padding: 20px;
+}
+
 .btn-add-album{
     display: block;
     padding: 10px;
@@ -118,12 +122,13 @@ header #logo{
 
 .album-item{
     list-style: none;
-    width: 31%;
+    width: 95%;
     border: 1px solid #dddddd;
     height: 120px;
     float: left;
     padding-top: 20px;
     padding-bottom: 20px;
+    padding-left:20px;
     color: gray;
     background: white;
     margin: 10px;
@@ -168,9 +173,10 @@ header #logo{
 
 .seguro{
     position: absolute;
-    margin-top: -100px;
+    margin-top: -45px;
     background: white;
-    width: 275px;
+    width: 500px;
+    height: 40px;
     text-align: justify;
     color: black;
 

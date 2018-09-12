@@ -4,10 +4,11 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 import { Album } from '../models/album';
+import { Image } from '../models/image';
 import { GLOBAL } from './global';
 
 @Injectable()
-export class AlbumService {
+export class ImageService {
 
     private _http: Http;
     private url: string;
@@ -29,13 +30,13 @@ export class AlbumService {
         .pipe(map((res: Response) => res.json())); 
     }    
 
-    addAlbum(album: Album) {
-        let json = JSON.stringify(album);
+    addImage(image: Image) {
+        let json = JSON.stringify(image);
         let params = json;
         let headers = new Headers({'Content-Type': 'application/json'});
 
         return this._http
-        .post(this.url + 'album', params, { headers: headers})
+        .post(this.url + 'image', params, { headers: headers})
         .pipe(map((res: Response) => res.json())); 
     }   
     
