@@ -8,4 +8,13 @@
             El título no es válido
         </span>
     </p>
+
+    <div *ngIf="is_edit">
+        <label>Subir imagen</label>
+        <p>
+            <input type="file" placeholder="Subir imagen..." (change)="fileChangeEvent($event)"/>
+        </p>
+    </div>
+
+    <input type="submit" value="{{titulo}}" [disabled]="!formImage.form.valid"/>
 </form>

@@ -38,25 +38,34 @@ export class ImageAddComponent implements OnInit{
     }
 
     onSubmit(){
-       this._imageService.addImage(this.image)
-       .subscribe(
-           response => {
-               if (!response.image){
-                   alert("Error en el servidor");
-                   return;
-               }
-               
-               this.image = response.image;
+        // Obtengo el id del album desde la URL
+        this._route.params.forEach((params: Params) => {
 
-               this._router.navigate(['/album',]);
-           },
-           error => {
-            this.errorMessage = <any>error;
+            let albumId = params['album'];
+            this.image.album = albumId;
 
-            if (this.errorMessage != null){
-                console.log(this.errorMessage);
-            }               
-           }
-       )
+            this._imageService.addImage(this.image)
+            .subscribe(
+                response => {
+                    if (!response.image){
+                        alert("Error en el servidor");
+                        return;
+                    }
+                    
+                    this.image = response.image;
+                    
+                    this._router.navigate(['/editar-imagen', response.image._id]);
+                },
+                error => {
+                    this.errorMessage = <any>error;
+
+                    if (this.errorMessage != null){
+                        console.log(this.errorMessage);
+                    }               
+                }
+            )
+        });
     }
+
+            
 }

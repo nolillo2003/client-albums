@@ -189,3 +189,55 @@ footer{
     color: grey;
     font-size: 12px;
 }
+
+#pictures-list .image-item{
+    float: left;
+    margin: 0px;
+    padding: 0px;
+    height: 200px;
+    width: 240px;
+    list-style: none;
+    border: 1px solid #CCCCCC;
+}
+
+#pictures-list .image-item .picture{
+    height: 150px;
+    overflow: hidden;
+}
+
+#pictures-list .image-item img{
+    width: 100%;
+}
+
+#pictures-list .image-item .title{
+    width: 100%;
+    height: 50px;
+    display: block;
+    background: #EEEEEE;
+    text-align: center;
+    color: #444444;
+    line-height: 50px;
+}
+
+#pictures-list .image-item .title a{
+    text-decoration: none;
+    color: #444444;
+}
+
+.image-box{
+    margin-left: 25px;
+    background: white;
+    color: black;
+    list-style: none;
+    width: 90%;
+    min-height: 150px;
+    float: left;
+    padding: 20px;
+    margin: 10px;  
+    margin-top: 20px;  
+}
+
+.image-box .imagen{
+    width: 98%;
+}
+

@@ -1,0 +1,9 @@
+<div class="loading" *ngIf="loading">
+    <img src="../../assets/images/loader.gif"/>
+</div>
+
+<div *ngIf="image" class="image-box">
+    <a [routerLink]="['/album', image.album._id]" class="btn btn-ver">Volver al album</a>
+    <h1>{{image.title}}</h1>
+    <img class="imagen" src="{{api_url + image.picture}}"/>
+</div>
