@@ -24,6 +24,7 @@ export class ImageDetailComponent implements OnInit {
     public api_url: string;
     public errorMessage: any;
     private loading: boolean;
+    public confirmado: string;
 
     constructor(_route: ActivatedRoute, _router: Router, _imageService: ImageService) {
         this._route = _route;
@@ -72,4 +73,33 @@ export class ImageDetailComponent implements OnInit {
             );
         });
     }
+
+    onDeleteConfirm(id: string){
+        this.confirmado = id;
+    }
+
+    onCancelDeleteConfirm(){
+        this.confirmado = null;
+    }
+
+    onDeleteImage(id: string){
+        this._imageService.deleteImage(id).subscribe(
+            result => {
+                if (!result.image){
+                    alert('Error en el servidor');
+                } 
+
+                this._router.navigate(['/album', result.image.album]);
+            },
+            error => {
+                this.errorMessage = <any>error;
+
+                if (this.errorMessage != null){
+                    console.log(this.errorMessage);
+                }
+
+                //this.getAlbums();
+            }
+        );
+    }     
 }
